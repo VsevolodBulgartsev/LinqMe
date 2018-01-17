@@ -1,5 +1,6 @@
 package kz.illidan.gdeto.zdes.linqme.models;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -8,15 +9,22 @@ import java.util.List;
 public class Room {
 
     private long id;
-    private int timer1; //время на написание подсказки
-    private int timer2; // хз
+    private int betTimer; //время на написание подсказки
+    private int hintTimer; // время на написание стави
     private String name; // название комнаты
     private String password;
-    private List<User> User; // Имя пользователя
+    private List<User> users; // Имя пользователя
     private String chatHistory; // чат для пока набираем комнату
-//    private GameState state; // кажется, для того чтобы начать игру статус
-    private List<Round> round; // текущий раунт
+    private GameStates gameState; // текущий статус игры
+    private List<Round> rounds; // текущий раунд
     private String currentMovingUser; // пользователь, чей ход сейчас
+
+    public Room() {
+        this.users = new ArrayList<>();
+        this.rounds = new ArrayList<>();
+    }
+
+    //<editor-fold desc="getters and setters">
 
     public long getId() {
         return id;
@@ -26,20 +34,20 @@ public class Room {
         this.id = id;
     }
 
-    public int getTimer1() {
-        return timer1;
+    public int getBetTimer() {
+        return betTimer;
     }
 
-    public void setTimer1(int timer1) {
-        this.timer1 = timer1;
+    public void setBetTimer(int betTimer) {
+        this.betTimer = betTimer;
     }
 
-    public int getTimer2() {
-        return timer2;
+    public int getHintTimer() {
+        return hintTimer;
     }
 
-    public void setTimer2(int timer2) {
-        this.timer2 = timer2;
+    public void setHintTimer(int hintTimer) {
+        this.hintTimer = hintTimer;
     }
 
     public String getName() {
@@ -58,12 +66,12 @@ public class Room {
         this.password = password;
     }
 
-    public List<kz.illidan.gdeto.zdes.linqme.models.User> getUser() {
-        return User;
+    public List<User> getUsers() {
+        return users;
     }
 
-    public void setUser(List<kz.illidan.gdeto.zdes.linqme.models.User> user) {
-        User = user;
+    public void setUsers(List<User> users) {
+        this.users = users;
     }
 
     public String getChatHistory() {
@@ -74,12 +82,20 @@ public class Room {
         this.chatHistory = chatHistory;
     }
 
-    public List<Round> getRound() {
-        return round;
+    public GameStates getGameState() {
+        return gameState;
     }
 
-    public void setRound(List<Round> round) {
-        this.round = round;
+    public void setGameState(GameStates gameState) {
+        this.gameState = gameState;
+    }
+
+    public List<Round> getRounds() {
+        return rounds;
+    }
+
+    public void setRounds(List<Round> rounds) {
+        this.rounds = rounds;
     }
 
     public String getCurrentMovingUser() {
@@ -89,4 +105,6 @@ public class Room {
     public void setCurrentMovingUser(String currentMovingUser) {
         this.currentMovingUser = currentMovingUser;
     }
+
+    //</editor-fold>
 }
