@@ -23,9 +23,6 @@ public class User {
         this.totalPoints = totalPoints;
     }
 
-
-
-
 }
 
 
