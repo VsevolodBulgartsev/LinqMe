@@ -35,6 +35,18 @@ public class AuthController {
 
         game.getUsers().add(newUser);
 
-        return "Добро пожаловать";
+        return "Добро пожаловать!";
     }
+
+    @RequestMapping("/logout")
+    public String logout(@RequestParam("userName") String userName) {
+        for (User user : game.getUsers()) {
+            if (user.getName().equals(userName)) {
+                game.getUsers().remove(user);
+            }
+        }
+        return "До свидания!";
+    }
+
+
 }
